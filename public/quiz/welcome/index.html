@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're in! | Favorite Decades</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../../assets/logo.webp">
+<style>
+@font-face { font-family:"Bebas Neue"; src:url("../../assets/fonts/BebasNeue-Regular.ttf") format("truetype"); font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("../../assets/fonts/Montserrat-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+:root { --cream:#F6EBD9; --orange:#E8553A; --teal:#1F7A8C; --mustard:#F2B544; --plum:#2B1D2E; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--cream); color:var(--plum); font-family:Georgia,"Times New Roman",serif; font-size:18px; line-height:1.5; }
+.stripe { height:10px; background:linear-gradient(90deg,var(--orange) 0 25%,var(--mustard) 25% 50%,var(--teal) 50% 75%,var(--plum) 75% 100%); }
+main { max-width:620px; margin:0 auto; padding:22px 18px 48px; text-align:center; }
+.logo { display:block; width:110px; margin:0 auto 10px; }
+h1 { font-family:"Bebas Neue",Impact,sans-serif; font-weight:400; font-size:58px; line-height:1; margin:0 0 10px; }
+.card { background:#fff; border:3px solid var(--plum); border-radius:14px; padding:22px 18px; box-shadow:6px 6px 0 var(--orange); text-align:left; margin-top:18px; }
+.btn { display:inline-block; font-family:Montserrat,Arial,sans-serif; font-weight:700; color:#fff; background:var(--teal); border:3px solid var(--plum); border-radius:10px; padding:12px 18px; text-decoration:none; margin:6px 4px; }
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<main>
+  <img class="logo" src="../../assets/logo.webp" alt="Favorite Decades">
+  <h1>You're in!</h1>
+  <p id="line">Your email is confirmed. Your first photo from the past arrives within a week.</p>
+  <div class="card">
+    <p style="margin-top:0"><strong>What happens now:</strong> once a week, one real photo from the past lands in your inbox, with the story behind it. No spam, and you can unsubscribe any time.</p>
+    <p style="margin-bottom:0">Want more while you wait? We post every day on Facebook and make videos on YouTube.</p>
+  </div>
+  <p style="margin-top:22px">
+    <a class="btn" href="https://www.facebook.com/favoritedecades">Facebook</a>
+    <a class="btn" href="https://www.youtube.com/@FavoriteDecades">YouTube</a>
+    <a class="btn" style="background:var(--orange)" href="../">Take the quiz again</a>
+  </p>
+</main>
+<script>
+try {
+  const d = localStorage.getItem("fd_decade");
+  if (d && /^19[5-9]0s$/.test(d)) {
+    document.getElementById("line").textContent = "Your email is confirmed. Your first trip back to the " + d + " arrives within a week.";
+  }
+} catch (e) {}
+</script>
+</body>
+</html>

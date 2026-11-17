@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Decade Do You Belong In? | Favorite Decades</title>
+<meta name="description" content="8 quick questions. Find out which decade you really belong in, from the 1950s to the 1990s.">
+<meta property="og:title" content="Which Decade Do You Belong In?">
+<meta property="og:description" content="8 quick questions. Find out which decade you really belong in, from the 1950s to the 1990s.">
+<meta property="og:image" content="https://favoritedecades.com/quiz/share.png">
+<meta property="og:url" content="https://favoritedecades.com/quiz/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/logo.webp">
+<style>
+@font-face { font-family:"Bebas Neue"; src:url("../assets/fonts/BebasNeue-Regular.ttf") format("truetype"); font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("../assets/fonts/Montserrat-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+:root { --cream:#F6EBD9; --orange:#E8553A; --teal:#1F7A8C; --mustard:#F2B544; --plum:#2B1D2E; --accent:#E8553A; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--cream); color:var(--plum); font-family:Georgia,"Times New Roman",serif; font-size:18px; line-height:1.5; }
+.stripe { height:10px; background:linear-gradient(90deg,var(--orange) 0 25%,var(--mustard) 25% 50%,var(--teal) 50% 75%,var(--plum) 75% 100%); }
+main { max-width:620px; margin:0 auto; padding:22px 18px 48px; }
+.logo { display:block; width:96px; margin:0 auto 6px; }
+h1, h2 { font-family:"Bebas Neue",Impact,sans-serif; font-weight:400; letter-spacing:1px; line-height:1.05; margin:0; }
+h1 { font-size:52px; text-align:center; }
+.tag { font-family:Montserrat,Arial,sans-serif; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:2px; font-size:13px; text-align:center; margin:10px 0 18px; }
+.card { background:#fff; border:3px solid var(--plum); border-radius:14px; padding:22px 18px; box-shadow:6px 6px 0 var(--accent); }
+.btn { display:block; width:100%; font-family:Montserrat,Arial,sans-serif; font-weight:700; font-size:18px; color:#fff; background:var(--orange); border:3px solid var(--plum); border-radius:10px; padding:14px; cursor:pointer; }
+.progress { font-family:Montserrat,Arial,sans-serif; font-weight:700; font-size:13px; color:var(--teal); text-transform:uppercase; letter-spacing:2px; }
+.bar { height:8px; background:#eadcc4; border-radius:4px; margin:8px 0 16px; overflow:hidden; }
+.bar span { display:block; height:100%; background:var(--teal); transition:width .25s; }
+.q { font-family:"Bebas Neue",Impact,sans-serif; font-size:34px; line-height:1.1; margin:0 0 14px; }
+.opt { display:block; width:100%; text-align:left; font:inherit; color:var(--plum); background:var(--cream); border:2px solid var(--plum); border-radius:10px; padding:12px 14px; margin:0 0 10px; cursor:pointer; }
+.opt:hover, .opt:focus { background:var(--mustard); outline:none; }
+.result-decade { font-family:"Bebas Neue",Impact,sans-serif; font-size:86px; line-height:.95; color:var(--accent); text-align:center; margin:4px 0 6px; }
+.small { font-family:Montserrat,Arial,sans-serif; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:2px; color:var(--teal); text-align:center; margin:0; }
+.list { margin:12px 0 0; padding-left:20px; }
+.signup { margin-top:22px; }
+.signup input { width:100%; font:inherit; padding:12px; border:2px solid var(--plum); border-radius:8px; margin:0 0 10px; }
+.note { font-size:14px; color:#5a4a5c; text-align:center; margin:10px 0 0; }
+.share { display:flex; gap:10px; margin-top:14px; }
+.share .btn { background:var(--teal); font-size:15px; padding:11px; }
+.hidden { display:none; }
+.draft { background:var(--mustard); text-align:center; font-family:Montserrat,Arial,sans-serif; font-weight:700; font-size:13px; padding:6px; }
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<main>
+  <img class="logo" src="../assets/logo.webp" alt="Favorite Decades">
+
+  <section id="start">
+    <h1>Which Decade Do You Belong In?</h1>
+    <p class="tag">8 quick questions &middot; 1950s to 1990s</p>
+    <div class="card">
+      <p style="margin-top:0">Some of us were born in the wrong decade. Pick the answer that feels most like you, not the one you think is right. Your decade is waiting.</p>
+      <button class="btn" onclick="begin()">Start the quiz</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="hidden">
+    <div class="progress" id="progress"></div>
+    <div class="bar"><span id="barfill"></span></div>
+    <div class="card">
+      <p class="q" id="question"></p>
+      <div id="options"></div>
+    </div>
+  </section>
+
+  <section id="result" class="hidden">
+    <p class="small">You belong in the</p>
+    <p class="result-decade" id="r-decade"></p>
+    <div class="card">
+      <h2 id="r-title" style="font-size:34px;margin-bottom:8px"></h2>
+      <p id="r-text" style="margin:0"></p>
+      <ul class="list" id="r-list"></ul>
+      <div class="share">
+        <button class="btn" onclick="share()">Share my decade</button>
+        <button class="btn" style="background:var(--plum)" onclick="location.reload()">Take it again</button>
+      </div>
+    </div>
+
+    <div class="card signup">
+      <h2 style="font-size:30px;margin-bottom:6px" id="s-title"></h2>
+      <p style="margin:0 0 12px" id="s-text"></p>
+      <form id="kitform" action="https://app.kit.com/forms/10205633/subscriptions" method="post">
+        <input type="text" name="fields[first_name]" placeholder="First name" aria-label="First name">
+        <input type="email" name="email_address" placeholder="Your email address" aria-label="Email" required>
+        <input type="hidden" name="fields[favorite_decade]" id="decadefield" value="">
+        <button class="btn" type="submit" id="kitbtn">Send me my decade</button>
+      </form>
+      <p id="kitdone" class="hidden" style="font-weight:bold;margin:0">Almost there! Check your email and click the button to confirm. (No email in a few minutes? Look in spam or promotions.)</p>
+      <p class="note">Free. One email a week at most. Unsubscribe any time.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const QUESTIONS = [
+  ["It's Friday night. Where are you?", [
+    ["50s","At the drive-in, then a milkshake on the way home"],
+    ["60s","Dancing at a backyard party to the record player"],
+    ["70s","Skating at the roller rink under the disco ball"],
+    ["80s","At the arcade with a pocket full of quarters"],
+    ["90s","Picking out a movie at the video store, then ordering pizza"]]],
+  ["Pick your dream car.", [
+    ["50s","A two-tone convertible with big tail fins"],
+    ["60s","A muscle car with a roaring engine"],
+    ["70s","A van with shag carpet and a mural on the side"],
+    ["80s","A boxy hatchback with a tape deck"],
+    ["90s","A sporty SUV with a CD player"]]],
+  ["How do you call your best friend?", [
+    ["50s","Pick up the phone and ask the operator"],
+    ["60s","The rotary phone on the kitchen wall"],
+    ["70s","Stretch the long curly cord into the closet for privacy"],
+    ["80s","Walk around the house with the new cordless phone"],
+    ["90s","Page them, then wait by the phone"]]],
+  ["Which kitchen is yours?", [
+    ["50s","Pink and turquoise, with a chrome dinette set"],
+    ["60s","Copper pots and a brand-new wall oven"],
+    ["70s","Avocado green appliances and a fondue pot"],
+    ["80s","Country blue, with geese on everything"],
+    ["90s","A microwave, a bread machine and a big kitchen island"]]],
+  ["What's playing?", [
+    ["50s","Rock 'n' roll on the jukebox"],
+    ["60s","The Motown sound on a transistor radio"],
+    ["70s","Disco on the 8-track"],
+    ["80s","A mixtape on the boombox"],
+    ["90s","Grunge on a portable CD player"]]],
+  ["TV night looks like...", [
+    ["50s","The whole family around one black-and-white set"],
+    ["60s","The first color TV on the block"],
+    ["70s","Three channels, and you're the remote control"],
+    ["80s","Taping your favorite show on the VCR"],
+    ["90s","Flipping through 50 cable channels"]]],
+  ["Pick a hairdo.", [
+    ["50s","A pompadour or a high ponytail"],
+    ["60s","A beehive or a mop-top"],
+    ["70s","Feathered and parted down the middle"],
+    ["80s","Big, permed and full of hairspray"],
+    ["90s","Layers, with butterfly clips"]]],
+  ["Your perfect weekend treat?", [
+    ["50s","A float at the soda fountain counter"],
+    ["60s","A Jell-O mold at the backyard barbecue"],
+    ["70s","A fondue party with the neighbors"],
+    ["80s","Anything from the mall food court"],
+    ["90s","A fancy coffee at the new coffeehouse"]]]
+];
+
+const RESULTS = {
+  "50s": { decade:"1950s", accent:"#5CC6C0",
+    title:"Sock hops and soda fountains",
+    text:"You like things simple, friendly and a little bit shiny. Neighbors on the porch, dinner at six, and a Sunday drive just because. You'd have been right at home when the whole street gathered around the first TV set.",
+    list:["Your spot: the counter stool at the diner","Your sound: the jukebox","Your ride: anything with tail fins"] },
+  "60s": { decade:"1960s", accent:"#F28C28",
+    title:"Records, rockets and big dreams",
+    text:"You're a dreamer with your feet on the dance floor. New music, new ideas and a sky full of rockets: you'd have loved watching the world change week by week.",
+    list:["Your spot: the backyard party","Your sound: the transistor radio","Your ride: a muscle car"] },
+  "70s": { decade:"1970s", accent:"#E8553A",
+    title:"Shag carpet and roller rinks",
+    text:"You're easygoing, warm and up for anything. Long road trips, wood-paneled dens and friends who stop by without calling first. You'd have owned that roller rink.",
+    list:["Your spot: the roller rink","Your sound: the 8-track","Your ride: the family station wagon, or a van"] },
+  "80s": { decade:"1980s", accent:"#1F7A8C",
+    title:"Arcades and mixtapes",
+    text:"You're bold, bright and a little bit loud, in the best way. Saturday at the mall, quarters for the arcade and a mixtape made just for someone. You'd have rewound that tape with a pencil.",
+    list:["Your spot: the arcade","Your sound: the boombox","Your ride: a boxy hatchback with a tape deck"] },
+  "90s": { decade:"1990s", accent:"#6B3FA0",
+    title:"Video stores and pagers",
+    text:"You're laid-back and loyal, happiest on the couch with your people. Friday night at the video store, a pizza on the way, and a pager on your belt just in case.",
+    list:["Your spot: the video store aisle","Your sound: a portable CD player","Your ride: an SUV with a CD player"] }
+};
+
+let i = 0, picks = [];
+const $ = id => document.getElementById(id);
+function shuffle(a){ a = a.slice(); for (let k=a.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [a[k],a[j]]=[a[j],a[k]]; } return a; }
+function begin(){ $("start").classList.add("hidden"); $("quiz").classList.remove("hidden"); show(); }
+function show(){
+  const [q, opts] = QUESTIONS[i];
+  $("progress").textContent = "Question " + (i+1) + " of " + QUESTIONS.length;
+  $("barfill").style.width = (i/QUESTIONS.length*100) + "%";
+  $("question").textContent = q;
+  $("options").innerHTML = "";
+  shuffle(opts).forEach(([d, label]) => {
+    const b = document.createElement("button");
+    b.className = "opt"; b.textContent = label;
+    b.onclick = () => { picks.push(d); i++; i < QUESTIONS.length ? show() : finish(); };
+    $("options").appendChild(b);
+  });
+}
+function finish(){
+  const count = {}; picks.forEach(d => count[d] = (count[d]||0) + 1);
+  const best = Math.max(...Object.values(count));
+  // Tie: the decade picked most recently among the tied ones wins.
+  const winner = picks.slice().reverse().find(d => count[d] === best);
+  const r = RESULTS[winner];
+  document.documentElement.style.setProperty("--accent", r.accent);
+  try { localStorage.setItem("fd_decade", r.decade); } catch(e) {}
+  $("decadefield").value = r.decade;
+  $("quiz").classList.add("hidden"); $("result").classList.remove("hidden");
+  $("r-decade").textContent = r.decade;
+  $("r-title").textContent = r.title;
+  $("r-text").textContent = r.text;
+  $("r-list").innerHTML = r.list.map(x => "<li>" + x + "</li>").join("");
+  $("s-title").textContent = "Get a weekly trip back to the " + r.decade;
+  $("s-text").textContent = "One real photo from the " + r.decade + " in your inbox each week, with the story behind it." +
+    (r.decade === "1970s" ? " Plus our free \"Guess the Year: 1970s Road Trip\" printable trivia cards to start." : "");
+  window.scrollTo(0,0);
+}
+function share(){
+  const text = "I belong in the " + $("r-decade").textContent + "! Which decade do you belong in?";
+  if (navigator.share) navigator.share({ title:"Which Decade Do You Belong In?", text, url:location.href }).catch(()=>{});
+  else { navigator.clipboard && navigator.clipboard.writeText(text + " " + location.href); alert("Copied! Paste it anywhere to share."); }
+}
+document.getElementById("kitform").addEventListener("submit", function(ev){
+  ev.preventDefault();
+  const f = ev.target, btn = $("kitbtn");
+  btn.disabled = true; btn.textContent = "Sending...";
+  fetch(f.action, { method:"POST", body:new FormData(f), headers:{ "Accept":"application/json" } })
+    .then(r => { if (!r.ok) throw new Error(r.status); f.classList.add("hidden"); $("kitdone").classList.remove("hidden"); })
+    .catch(() => { f.submit(); });
+});
+</script>
+</body>
+</html>
