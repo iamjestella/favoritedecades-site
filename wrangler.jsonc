@@ -3,5 +3,9 @@
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./public"
-  }
+  },
+  "routes": [
+    { "pattern": "favoritedecades.com", "custom_domain": true },
+    { "pattern": "www.favoritedecades.com", "custom_domain": true }
+  ]
 }
